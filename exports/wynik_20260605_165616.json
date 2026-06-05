@@ -1,0 +1,6094 @@
+{
+  "export_date": "2026-06-05T16:56:16.151282",
+  "application": "Klasyfikator Sampli Perkusyjnych",
+  "parameters": {
+    "criterion": "gini",
+    "max_depth": 9,
+    "min_samples_split": 20,
+    "min_samples_leaf": 10,
+    "test_split": 0.36
+  },
+  "tree": {
+    "params": {
+      "criterion": "gini",
+      "max_depth": 9,
+      "min_samples_split": 20,
+      "min_samples_leaf": 10
+    },
+    "feature_names": [
+      "spectral_centroid_mean",
+      "spectral_centroid_std",
+      "spectral_bandwidth_mean",
+      "spectral_bandwidth_std",
+      "spectral_rolloff_mean",
+      "spectral_rolloff_std",
+      "spectral_flatness_mean",
+      "spectral_flatness_std",
+      "rms_mean",
+      "rms_std",
+      "zero_crossing_rate_mean",
+      "zero_crossing_rate_std",
+      "mfcc_1_mean",
+      "mfcc_2_mean",
+      "mfcc_3_mean",
+      "mfcc_4_mean",
+      "mfcc_5_mean",
+      "mfcc_6_mean",
+      "mfcc_7_mean",
+      "mfcc_8_mean",
+      "mfcc_9_mean",
+      "mfcc_10_mean",
+      "mfcc_11_mean",
+      "mfcc_12_mean",
+      "mfcc_13_mean",
+      "mfcc_1_std",
+      "mfcc_2_std",
+      "mfcc_3_std",
+      "mfcc_4_std",
+      "mfcc_5_std",
+      "mfcc_6_std",
+      "mfcc_7_std",
+      "mfcc_8_std",
+      "mfcc_9_std",
+      "mfcc_10_std",
+      "mfcc_11_std",
+      "mfcc_12_std",
+      "mfcc_13_std",
+      "onset_strength_mean",
+      "onset_strength_std",
+      "tempo",
+      "chroma_mean",
+      "chroma_std"
+    ],
+    "classes": [
+      "hihat",
+      "kick",
+      "snare"
+    ],
+    "tree": {
+      "node_id": 1,
+      "depth": 0,
+      "samples": 816,
+      "impurity": 0.6422,
+      "is_leaf": false,
+      "class_distribution": {
+        "hihat": 318,
+        "kick": 168,
+        "snare": 330
+      },
+      "feature_index": 10,
+      "feature_name": "zero_crossing_rate_mean",
+      "threshold": 0.0291,
+      "left": {
+        "node_id": 2,
+        "depth": 1,
+        "samples": 146,
+        "impurity": 0.2125,
+        "is_leaf": false,
+        "class_distribution": {
+          "hihat": 9,
+          "kick": 129,
+          "snare": 8
+        },
+        "feature_index": 8,
+        "feature_name": "rms_mean",
+        "threshold": 0.0584,
+        "left": {
+          "node_id": 3,
+          "depth": 2,
+          "samples": 17,
+          "impurity": 0.5467,
+          "is_leaf": true,
+          "class_distribution": {
+            "hihat": 9,
+            "kick": 1,
+            "snare": 7
+          },
+          "predicted_class": "hihat"
+        },
+        "right": {
+          "node_id": 4,
+          "depth": 2,
+          "samples": 129,
+          "impurity": 0.0154,
+          "is_leaf": false,
+          "class_distribution": {
+            "kick": 128,
+            "snare": 1
+          },
+          "feature_index": 11,
+          "feature_name": "zero_crossing_rate_std",
+          "threshold": 0.002,
+          "left": {
+            "node_id": 5,
+            "depth": 3,
+            "samples": 10,
+            "impurity": 0.18,
+            "is_leaf": true,
+            "class_distribution": {
+              "kick": 9,
+              "snare": 1
+            },
+            "predicted_class": "kick"
+          },
+          "right": {
+            "node_id": 6,
+            "depth": 3,
+            "samples": 119,
+            "impurity": 0.0,
+            "is_leaf": true,
+            "class_distribution": {
+              "kick": 119
+            },
+            "predicted_class": "kick"
+          }
+        }
+      },
+      "right": {
+        "node_id": 7,
+        "depth": 1,
+        "samples": 670,
+        "impurity": 0.5529,
+        "is_leaf": false,
+        "class_distribution": {
+          "hihat": 309,
+          "kick": 39,
+          "snare": 322
+        },
+        "feature_index": 9,
+        "feature_name": "rms_std",
+        "threshold": 0.158,
+        "left": {
+          "node_id": 8,
+          "depth": 2,
+          "samples": 623,
+          "impurity": 0.5126,
+          "is_leaf": false,
+          "class_distribution": {
+            "hihat": 306,
+            "kick": 8,
+            "snare": 309
+          },
+          "feature_index": 16,
+          "feature_name": "mfcc_5_mean",
+          "threshold": 6.8311,
+          "left": {
+            "node_id": 9,
+            "depth": 3,
+            "samples": 513,
+            "impurity": 0.4942,
+            "is_leaf": false,
+            "class_distribution": {
+              "hihat": 224,
+              "kick": 1,
+              "snare": 288
+            },
+            "feature_index": 14,
+            "feature_name": "mfcc_3_mean",
+            "threshold": -20.9346,
+            "left": {
+              "node_id": 10,
+              "depth": 4,
+              "samples": 39,
+              "impurity": 0.355,
+              "is_leaf": false,
+              "class_distribution": {
+                "hihat": 30,
+                "snare": 9
+              },
+              "feature_index": 13,
+              "feature_name": "mfcc_2_mean",
+              "threshold": 179.9287,
+              "left": {
+                "node_id": 11,
+                "depth": 5,
+                "samples": 17,
+                "impurity": 0.0,
+                "is_leaf": true,
+                "class_distribution": {
+                  "hihat": 17
+                },
+                "predicted_class": "hihat"
+              },
+              "right": {
+                "node_id": 12,
+                "depth": 5,
+                "samples": 22,
+                "impurity": 0.4835,
+                "is_leaf": false,
+                "class_distribution": {
+                  "hihat": 13,
+                  "snare": 9
+                },
+                "feature_index": 26,
+                "feature_name": "mfcc_2_std",
+                "threshold": 4.6272,
+                "left": {
+                  "node_id": 13,
+                  "depth": 6,
+                  "samples": 10,
+                  "impurity": 0.32,
+                  "is_leaf": true,
+                  "class_distribution": {
+                    "hihat": 8,
+                    "snare": 2
+                  },
+                  "predicted_class": "hihat"
+                },
+                "right": {
+                  "node_id": 14,
+                  "depth": 6,
+                  "samples": 12,
+                  "impurity": 0.4861,
+                  "is_leaf": true,
+                  "class_distribution": {
+                    "hihat": 5,
+                    "snare": 7
+                  },
+                  "predicted_class": "snare"
+                }
+              }
+            },
+            "right": {
+              "node_id": 15,
+              "depth": 4,
+              "samples": 474,
+              "impurity": 0.486,
+              "is_leaf": false,
+              "class_distribution": {
+                "hihat": 194,
+                "kick": 1,
+                "snare": 279
+              },
+              "feature_index": 9,
+              "feature_name": "rms_std",
+              "threshold": 0.0878,
+              "left": {
+                "node_id": 16,
+                "depth": 5,
+                "samples": 322,
+                "impurity": 0.4962,
+                "is_leaf": false,
+                "class_distribution": {
+                  "hihat": 147,
+                  "snare": 175
+                },
+                "feature_index": 16,
+                "feature_name": "mfcc_5_mean",
+                "threshold": -3.1276,
+                "left": {
+                  "node_id": 17,
+                  "depth": 6,
+                  "samples": 273,
+                  "impurity": 0.4864,
+                  "is_leaf": false,
+                  "class_distribution": {
+                    "hihat": 114,
+                    "snare": 159
+                  },
+                  "feature_index": 18,
+                  "feature_name": "mfcc_7_mean",
+                  "threshold": 18.6194,
+                  "left": {
+                    "node_id": 18,
+                    "depth": 7,
+                    "samples": 222,
+                    "impurity": 0.4746,
+                    "is_leaf": false,
+                    "class_distribution": {
+                      "hihat": 86,
+                      "snare": 136
+                    },
+                    "feature_index": 3,
+                    "feature_name": "spectral_bandwidth_std",
+                    "threshold": 1194.1396,
+                    "left": {
+                      "node_id": 19,
+                      "depth": 8,
+                      "samples": 192,
+                      "impurity": 0.4604,
+                      "is_leaf": false,
+                      "class_distribution": {
+                        "hihat": 69,
+                        "snare": 123
+                      },
+                      "feature_index": 11,
+                      "feature_name": "zero_crossing_rate_std",
+                      "threshold": 0.0253,
+                      "left": {
+                        "node_id": 20,
+                        "depth": 9,
+                        "samples": 12,
+                        "impurity": 0.4444,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 8,
+                          "snare": 4
+                        },
+                        "predicted_class": "hihat"
+                      },
+                      "right": {
+                        "node_id": 21,
+                        "depth": 9,
+                        "samples": 180,
+                        "impurity": 0.4481,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 61,
+                          "snare": 119
+                        },
+                        "predicted_class": "snare"
+                      }
+                    },
+                    "right": {
+                      "node_id": 22,
+                      "depth": 8,
+                      "samples": 30,
+                      "impurity": 0.4911,
+                      "is_leaf": false,
+                      "class_distribution": {
+                        "hihat": 17,
+                        "snare": 13
+                      },
+                      "feature_index": 31,
+                      "feature_name": "mfcc_7_std",
+                      "threshold": 3.6647,
+                      "left": {
+                        "node_id": 23,
+                        "depth": 9,
+                        "samples": 12,
+                        "impurity": 0.4861,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 5,
+                          "snare": 7
+                        },
+                        "predicted_class": "snare"
+                      },
+                      "right": {
+                        "node_id": 24,
+                        "depth": 9,
+                        "samples": 18,
+                        "impurity": 0.4444,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 12,
+                          "snare": 6
+                        },
+                        "predicted_class": "hihat"
+                      }
+                    }
+                  },
+                  "right": {
+                    "node_id": 25,
+                    "depth": 7,
+                    "samples": 51,
+                    "impurity": 0.4952,
+                    "is_leaf": false,
+                    "class_distribution": {
+                      "hihat": 28,
+                      "snare": 23
+                    },
+                    "feature_index": 27,
+                    "feature_name": "mfcc_3_std",
+                    "threshold": 7.9541,
+                    "left": {
+                      "node_id": 26,
+                      "depth": 8,
+                      "samples": 32,
+                      "impurity": 0.4512,
+                      "is_leaf": false,
+                      "class_distribution": {
+                        "hihat": 21,
+                        "snare": 11
+                      },
+                      "feature_index": 41,
+                      "feature_name": "chroma_mean",
+                      "threshold": 0.6568,
+                      "left": {
+                        "node_id": 27,
+                        "depth": 9,
+                        "samples": 18,
+                        "impurity": 0.3457,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 14,
+                          "snare": 4
+                        },
+                        "predicted_class": "hihat"
+                      },
+                      "right": {
+                        "node_id": 28,
+                        "depth": 9,
+                        "samples": 14,
+                        "impurity": 0.5,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 7,
+                          "snare": 7
+                        },
+                        "predicted_class": "hihat"
+                      }
+                    },
+                    "right": {
+                      "node_id": 29,
+                      "depth": 8,
+                      "samples": 19,
+                      "impurity": 0.4654,
+                      "is_leaf": true,
+                      "class_distribution": {
+                        "hihat": 7,
+                        "snare": 12
+                      },
+                      "predicted_class": "snare"
+                    }
+                  }
+                },
+                "right": {
+                  "node_id": 30,
+                  "depth": 6,
+                  "samples": 49,
+                  "impurity": 0.4398,
+                  "is_leaf": false,
+                  "class_distribution": {
+                    "hihat": 33,
+                    "snare": 16
+                  },
+                  "feature_index": 1,
+                  "feature_name": "spectral_centroid_std",
+                  "threshold": 2157.7469,
+                  "left": {
+                    "node_id": 31,
+                    "depth": 7,
+                    "samples": 36,
+                    "impurity": 0.3133,
+                    "is_leaf": false,
+                    "class_distribution": {
+                      "hihat": 29,
+                      "snare": 7
+                    },
+                    "feature_index": 14,
+                    "feature_name": "mfcc_3_mean",
+                    "threshold": 8.8116,
+                    "left": {
+                      "node_id": 32,
+                      "depth": 8,
+                      "samples": 12,
+                      "impurity": 0.0,
+                      "is_leaf": true,
+                      "class_distribution": {
+                        "hihat": 12
+                      },
+                      "predicted_class": "hihat"
+                    },
+                    "right": {
+                      "node_id": 33,
+                      "depth": 8,
+                      "samples": 24,
+                      "impurity": 0.4132,
+                      "is_leaf": false,
+                      "class_distribution": {
+                        "hihat": 17,
+                        "snare": 7
+                      },
+                      "feature_index": 19,
+                      "feature_name": "mfcc_8_mean",
+                      "threshold": 12.6287,
+                      "left": {
+                        "node_id": 34,
+                        "depth": 9,
+                        "samples": 13,
+                        "impurity": 0.2604,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 11,
+                          "snare": 2
+                        },
+                        "predicted_class": "hihat"
+                      },
+                      "right": {
+                        "node_id": 35,
+                        "depth": 9,
+                        "samples": 11,
+                        "impurity": 0.4959,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 6,
+                          "snare": 5
+                        },
+                        "predicted_class": "hihat"
+                      }
+                    }
+                  },
+                  "right": {
+                    "node_id": 36,
+                    "depth": 7,
+                    "samples": 13,
+                    "impurity": 0.426,
+                    "is_leaf": true,
+                    "class_distribution": {
+                      "hihat": 4,
+                      "snare": 9
+                    },
+                    "predicted_class": "snare"
+                  }
+                }
+              },
+              "right": {
+                "node_id": 37,
+                "depth": 5,
+                "samples": 152,
+                "impurity": 0.4362,
+                "is_leaf": false,
+                "class_distribution": {
+                  "hihat": 47,
+                  "kick": 1,
+                  "snare": 104
+                },
+                "feature_index": 2,
+                "feature_name": "spectral_bandwidth_mean",
+                "threshold": 1802.5391,
+                "left": {
+                  "node_id": 38,
+                  "depth": 6,
+                  "samples": 34,
+                  "impurity": 0.4983,
+                  "is_leaf": false,
+                  "class_distribution": {
+                    "hihat": 16,
+                    "snare": 18
+                  },
+                  "feature_index": 18,
+                  "feature_name": "mfcc_7_mean",
+                  "threshold": 13.0295,
+                  "left": {
+                    "node_id": 39,
+                    "depth": 7,
+                    "samples": 17,
+                    "impurity": 0.4152,
+                    "is_leaf": true,
+                    "class_distribution": {
+                      "hihat": 5,
+                      "snare": 12
+                    },
+                    "predicted_class": "snare"
+                  },
+                  "right": {
+                    "node_id": 40,
+                    "depth": 7,
+                    "samples": 17,
+                    "impurity": 0.4567,
+                    "is_leaf": true,
+                    "class_distribution": {
+                      "hihat": 11,
+                      "snare": 6
+                    },
+                    "predicted_class": "hihat"
+                  }
+                },
+                "right": {
+                  "node_id": 41,
+                  "depth": 6,
+                  "samples": 118,
+                  "impurity": 0.3997,
+                  "is_leaf": false,
+                  "class_distribution": {
+                    "hihat": 31,
+                    "kick": 1,
+                    "snare": 86
+                  },
+                  "feature_index": 35,
+                  "feature_name": "mfcc_11_std",
+                  "threshold": 6.2114,
+                  "left": {
+                    "node_id": 42,
+                    "depth": 7,
+                    "samples": 97,
+                    "impurity": 0.3552,
+                    "is_leaf": false,
+                    "class_distribution": {
+                      "hihat": 21,
+                      "kick": 1,
+                      "snare": 75
+                    },
+                    "feature_index": 34,
+                    "feature_name": "mfcc_10_std",
+                    "threshold": -2.4554,
+                    "left": {
+                      "node_id": 43,
+                      "depth": 8,
+                      "samples": 28,
+                      "impurity": 0.0689,
+                      "is_leaf": false,
+                      "class_distribution": {
+                        "hihat": 1,
+                        "snare": 27
+                      },
+                      "feature_index": 2,
+                      "feature_name": "spectral_bandwidth_mean",
+                      "threshold": 2666.9111,
+                      "left": {
+                        "node_id": 44,
+                        "depth": 9,
+                        "samples": 18,
+                        "impurity": 0.0,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "snare": 18
+                        },
+                        "predicted_class": "snare"
+                      },
+                      "right": {
+                        "node_id": 45,
+                        "depth": 9,
+                        "samples": 10,
+                        "impurity": 0.18,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 1,
+                          "snare": 9
+                        },
+                        "predicted_class": "snare"
+                      }
+                    },
+                    "right": {
+                      "node_id": 46,
+                      "depth": 8,
+                      "samples": 69,
+                      "impurity": 0.4318,
+                      "is_leaf": false,
+                      "class_distribution": {
+                        "hihat": 20,
+                        "kick": 1,
+                        "snare": 48
+                      },
+                      "feature_index": 18,
+                      "feature_name": "mfcc_7_mean",
+                      "threshold": -9.6546,
+                      "left": {
+                        "node_id": 47,
+                        "depth": 9,
+                        "samples": 14,
+                        "impurity": 0.5,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 7,
+                          "snare": 7
+                        },
+                        "predicted_class": "hihat"
+                      },
+                      "right": {
+                        "node_id": 48,
+                        "depth": 9,
+                        "samples": 55,
+                        "impurity": 0.3881,
+                        "is_leaf": true,
+                        "class_distribution": {
+                          "hihat": 13,
+                          "kick": 1,
+                          "snare": 41
+                        },
+                        "predicted_class": "snare"
+                      }
+                    }
+                  },
+                  "right": {
+                    "node_id": 49,
+                    "depth": 7,
+                    "samples": 21,
+                    "impurity": 0.4989,
+                    "is_leaf": false,
+                    "class_distribution": {
+                      "hihat": 10,
+                      "snare": 11
+                    },
+                    "feature_index": 24,
+                    "feature_name": "mfcc_13_mean",
+                    "threshold": 0.9,
+                    "left": {
+                      "node_id": 50,
+                      "depth": 8,
+                      "samples": 11,
+                      "impurity": 0.4628,
+                      "is_leaf": true,
+                      "class_distribution": {
+                        "hihat": 7,
+                        "snare": 4
+                      },
+                      "predicted_class": "hihat"
+                    },
+                    "right": {
+                      "node_id": 51,
+                      "depth": 8,
+                      "samples": 10,
+                      "impurity": 0.42,
+                      "is_leaf": true,
+                      "class_distribution": {
+                        "hihat": 3,
+                        "snare": 7
+                      },
+                      "predicted_class": "snare"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "node_id": 52,
+            "depth": 3,
+            "samples": 110,
+            "impurity": 0.4038,
+            "is_leaf": false,
+            "class_distribution": {
+              "hihat": 82,
+              "kick": 7,
+              "snare": 21
+            },
+            "feature_index": 9,
+            "feature_name": "rms_std",
+            "threshold": 0.0825,
+            "left": {
+              "node_id": 53,
+              "depth": 4,
+              "samples": 78,
+              "impurity": 0.1634,
+              "is_leaf": false,
+              "class_distribution": {
+                "hihat": 71,
+                "snare": 7
+              },
+              "feature_index": 28,
+              "feature_name": "mfcc_4_std",
+              "threshold": -1.664,
+              "left": {
+                "node_id": 54,
+                "depth": 5,
+                "samples": 18,
+                "impurity": 0.4753,
+                "is_leaf": true,
+                "class_distribution": {
+                  "hihat": 11,
+                  "snare": 7
+                },
+                "predicted_class": "hihat"
+              },
+              "right": {
+                "node_id": 55,
+                "depth": 5,
+                "samples": 60,
+                "impurity": 0.0,
+                "is_leaf": true,
+                "class_distribution": {
+                  "hihat": 60
+                },
+                "predicted_class": "hihat"
+              }
+            },
+            "right": {
+              "node_id": 56,
+              "depth": 4,
+              "samples": 32,
+              "impurity": 0.6426,
+              "is_leaf": false,
+              "class_distribution": {
+                "hihat": 11,
+                "kick": 7,
+                "snare": 14
+              },
+              "feature_index": 30,
+              "feature_name": "mfcc_6_std",
+              "threshold": 5.763,
+              "left": {
+                "node_id": 57,
+                "depth": 5,
+                "samples": 22,
+                "impurity": 0.4835,
+                "is_leaf": false,
+                "class_distribution": {
+                  "hihat": 9,
+                  "snare": 13
+                },
+                "feature_index": 11,
+                "feature_name": "zero_crossing_rate_std",
+                "threshold": 0.0802,
+                "left": {
+                  "node_id": 58,
+                  "depth": 6,
+                  "samples": 10,
+                  "impurity": 0.42,
+                  "is_leaf": true,
+                  "class_distribution": {
+                    "hihat": 3,
+                    "snare": 7
+                  },
+                  "predicted_class": "snare"
+                },
+                "right": {
+                  "node_id": 59,
+                  "depth": 6,
+                  "samples": 12,
+                  "impurity": 0.5,
+                  "is_leaf": true,
+                  "class_distribution": {
+                    "hihat": 6,
+                    "snare": 6
+                  },
+                  "predicted_class": "hihat"
+                }
+              },
+              "right": {
+                "node_id": 60,
+                "depth": 5,
+                "samples": 10,
+                "impurity": 0.46,
+                "is_leaf": true,
+                "class_distribution": {
+                  "hihat": 2,
+                  "kick": 7,
+                  "snare": 1
+                },
+                "predicted_class": "kick"
+              }
+            }
+          }
+        },
+        "right": {
+          "node_id": 61,
+          "depth": 2,
+          "samples": 47,
+          "impurity": 0.4844,
+          "is_leaf": false,
+          "class_distribution": {
+            "hihat": 3,
+            "kick": 31,
+            "snare": 13
+          },
+          "feature_index": 27,
+          "feature_name": "mfcc_3_std",
+          "threshold": 6.0583,
+          "left": {
+            "node_id": 62,
+            "depth": 3,
+            "samples": 15,
+            "impurity": 0.32,
+            "is_leaf": true,
+            "class_distribution": {
+              "hihat": 3,
+              "snare": 12
+            },
+            "predicted_class": "snare"
+          },
+          "right": {
+            "node_id": 63,
+            "depth": 3,
+            "samples": 32,
+            "impurity": 0.0605,
+            "is_leaf": false,
+            "class_distribution": {
+              "kick": 31,
+              "snare": 1
+            },
+            "feature_index": 0,
+            "feature_name": "spectral_centroid_mean",
+            "threshold": 1797.7551,
+            "left": {
+              "node_id": 64,
+              "depth": 4,
+              "samples": 22,
+              "impurity": 0.0,
+              "is_leaf": true,
+              "class_distribution": {
+                "kick": 22
+              },
+              "predicted_class": "kick"
+            },
+            "right": {
+              "node_id": 65,
+              "depth": 4,
+              "samples": 10,
+              "impurity": 0.18,
+              "is_leaf": true,
+              "class_distribution": {
+                "kick": 9,
+                "snare": 1
+              },
+              "predicted_class": "kick"
+            }
+          }
+        }
+      }
+    }
+  },
+  "evaluation": {
+    "quality": {
+      "accuracy": 0.5708,
+      "accuracy_pct": 57.08,
+      "per_class": {
+        "hihat": {
+          "precision": 0.4803,
+          "recall": 0.3925,
+          "f1": 0.432,
+          "support": 186
+        },
+        "kick": {
+          "precision": 0.914,
+          "recall": 0.9239,
+          "f1": 0.9189,
+          "support": 92
+        },
+        "snare": {
+          "precision": 0.486,
+          "recall": 0.5746,
+          "f1": 0.5266,
+          "support": 181
+        },
+        "macro_avg": {
+          "precision": 0.6267,
+          "recall": 0.6303,
+          "f1": 0.6258,
+          "support": 459
+        }
+      },
+      "confusion_matrix": {
+        "matrix": [
+          [
+            73,
+            4,
+            109
+          ],
+          [
+            6,
+            85,
+            1
+          ],
+          [
+            73,
+            4,
+            104
+          ]
+        ],
+        "labels": [
+          "hihat",
+          "kick",
+          "snare"
+        ]
+      }
+    },
+    "efficiency": {
+      "tree_nodes_total": 65,
+      "tree_nodes_internal": 32,
+      "tree_leaves": 33,
+      "tree_actual_depth": 9,
+      "training_time_ms": 12890.19,
+      "n_features": 43,
+      "n_train_samples": 816,
+      "n_test_samples": 459
+    },
+    "train_accuracy": 0.7745
+  },
+  "dataset_info": {
+    "files": [
+      {
+        "filename": "[HAT] - 04.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 01.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 02.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 03.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 07.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 05.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 06.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 08.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 09.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 10.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 11.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 12.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 16.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 14.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 15.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 13.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 18.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 20.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 17.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 19.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 22.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 21.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 23.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 24.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 27.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 25.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 26.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 28.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[OH] - 01.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 30.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 31.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[HAT] - 29.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[OH] - 02.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[OH] - 03.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~CYMB (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (15).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (16).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT (17).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~HAT.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~CYMB (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat 3 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat 4 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Lowkey Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Lowkey Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Lo Key Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Hi Hat 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "APG Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Hi Hat 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "APG Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Cassette Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Cassette Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Hi Hat 8.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat 5.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat 9 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Hi Hat 9.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Sink Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Tamb.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Tape Hi Hats 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Tape Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bell Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bell Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bass Chant OH.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bass Hi Hats.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Hi Hat 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Hi Hat 5.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Hi Hat One.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cam Hi Hat 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cam Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout OH.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cam Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cassette Cowbell.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cam Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cassette Cowbell (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children of the corn Hi Hat 3 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children of the corn Hi Hat 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children of the corn Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children of the corn Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children of the corn Hi Hat 4 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children of the corn Hi Hat 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children Of The Corn Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Crispy Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Crispy Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Crusty Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Crusty Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cuttoffurmind Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Dirty Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Dirty Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Distort Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Distort Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Big Tim Open Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Big Mac Open Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ BK OH.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Glock Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Glock Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Livewire Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Crash.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cymbal (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 8 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 8.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 9 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 9.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 10 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 11 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 10.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 11.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 12 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 13 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 12.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 13.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 14 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 14.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 22 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat 22.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Paul OH.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Pinky Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD 6.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD 7.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD 5.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat TD.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw OH Shaker TD 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw OH TD.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Open Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Screw Open Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 4 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 5.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 5 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 8.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 8 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 9 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat 9.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat TD.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Sound Open Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 5.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 6.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 7.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi hat 12 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 8.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi hat 12.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 13 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat 13.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Dusty Memphis Hi Hat 7 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Dusty Memphis Hi Hat 7.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DJ Squeeky Open Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Evil Pimp Hi Hat 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Funk Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Funk Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Evil Pimp Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Gangsta Pat Hi Hat (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Gangsta Pat Hi Hat (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Gangsta Pat Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Hard D Hi Hat.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "HAT (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "HAT (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "HAT (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "HAT (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "HAT (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "HAT (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[KICK] - 03.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 04.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 02.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 01.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 06.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 08.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 07.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 05.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 09.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 10.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 11.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 12.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 13.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 14.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 15.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 16.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 18.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 17.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 19.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 20.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 22.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 21.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 23.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 24.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 27.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 25.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 26.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 29.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 28.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 30.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 33.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 32.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 31.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 34.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 35.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (1).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (3).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (4).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (5).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (7).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (6).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (8).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (9).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (10).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (11).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (13).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (14).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (12).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (15).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (16).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (17).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (18).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (20).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (19).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (21).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (24).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (23).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (22).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (25).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (27).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (28).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (26).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Killa Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Killa Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Killa Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "36 Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Lo Key Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Lo Key 808.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "36 Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (1).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (4).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (3).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (6).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (5).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (7).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (9).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (10).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (8).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (11).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Al Kapone Kick 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "909 Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (12).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Al Kapone Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 1.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc 808 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc 808 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 7.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Sub 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Sub.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Sub_2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Kick 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis 808 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 3 Im here to kill or be killed.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis 808.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 7.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Smooth Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Smooth Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Smooth Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bass Kick OH.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bass Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick 2 (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Blackout 808.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Blackout Kick 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bomb Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Blackout Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bomb Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Boomin Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Boomin Kick 2 (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[CLAP] - 01.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 02.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 03.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 04.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 06.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 05.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 07.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (18).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (19).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (20).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (21).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (22).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (23).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (26).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (24).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (25).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (27).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (29).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (28).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (30).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (31).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (32).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (34).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (33).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (35).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (36).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (37).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (38).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (18).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (19).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (20).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (21).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (23).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (22).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (24).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (26).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (25).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (27).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (28).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (29).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (30).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (31).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (32).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (33).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (35).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (34).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (36).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 3 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "88.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "90.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Lowkey Clap.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "89.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "92.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "91.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "93.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "94.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "95.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "96.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "97.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "98.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "100.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "123snares.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "99.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "187 FAM.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808  Snare 6 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808  Snare 6.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 3 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 4 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 4.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "12321snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Airy Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "a.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Airy Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "AK47 2 Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "AK47 Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "AK47 2 Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 2 Im Here to Kill or be killed.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Clap.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 1.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 5.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 4.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "b.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bang Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare 3 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bang Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bang Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bang Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bass Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bass Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bass Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bass Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Blackout Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Blackout Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Blackout Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Blackout Snare 4.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bling Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bling Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Box Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Box Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bump Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "BS Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Buzz Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Bump Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Buzz Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Buzz Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Buzz Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "c.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Cam Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Cam Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Children Of The Corn Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clank Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clank Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (18).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (19).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (21).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (20).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (23).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (22).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (24).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (26).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (25).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (28).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (27).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (31).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (30).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (29).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (32).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (33).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (36).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (35).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (34).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (39).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (37).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap (38).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap Snare 3 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Clap Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "cLAP_ (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "CM Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "CM Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "CU Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "CU Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Cut Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Cut Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Cuttoffurmind Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "d.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "D Pimpin Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "DARK CLAP (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (18).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (19).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (21).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (20).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (22).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (23).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (24).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (25).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (26).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (27).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (28).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (29).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (30).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (32).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (31).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (33).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (34).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (35).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (38).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (37).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (36).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (39).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (41).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (40).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (42).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (43).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (44).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (47).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (45).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (48).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (46).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (49).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (50).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (51).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (53).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (52).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (55).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (56).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (54).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (57).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (58).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (60).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (59).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (61).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (62).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (64).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (63).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (66).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (65).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (68).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (67).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (70).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (69).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (71).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (74).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (73).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (72).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (77).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (75).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (76).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "digsnare (78).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[KICK] - 03.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 04.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 05.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 06.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 07.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 10.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 09.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 08.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 11.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 14.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 12.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 13.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 15.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 16.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 18.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 17.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 19.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 20.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 22.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 21.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 23.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 24.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 25.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 27.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 26.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 28.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 30.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 29.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 31.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 32.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 33.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 34.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (1).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[KICK] - 35.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (3).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (4).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (5).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (7).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (6).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (8).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (9).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (10).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (11).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (13).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (12).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (14).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (16).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (15).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (17).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (18).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (20).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (21).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (19).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (23).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (24).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (22).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (25).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (27).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (28).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "~KICK (26).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Killa Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Killa Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Killa Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "36 Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Lo Key Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "2 Lo Key 808.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "36 Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (1).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (3).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (5).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (4).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (6).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (7).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (9).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (8).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (11).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (10).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "808 Kick (12).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "909 Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Al Kapone Kick 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Al Kapone Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc 808 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 1.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc 808 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Kick 7.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Sub_2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Sub 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Custom Sub.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Kick 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis 808 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 3 Im here to kill or be killed.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis 808.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 6.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Smooth Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Krysis Kick 7.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Smooth Kick 3.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Apoc Smooth Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bass Kick OH.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bass Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick 2 (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bassy Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Blackout 808.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Blackout Kick 4.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bomb Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Blackout Kick 5.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bomb Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Boomin Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Boomin Kick 2 (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Boomin Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bump Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Boomin Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bump Kick 2 (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bump Kick 2.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Bump Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Cam Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Cam Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Cassette 808 Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Cassette Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Cassette 808 Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Cassette Kick.wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Children of The Corn Kick 2 (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "Children of the corn Kick (2).wav",
+        "label": "kick"
+      },
+      {
+        "filename": "[CLAP] - 01.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 02.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 03.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 04.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 06.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 07.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[CLAP] - 05.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (18).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (19).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (21).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (22).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (20).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (23).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (24).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (25).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (26).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (27).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (29).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (28).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (30).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (31).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (34).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (35).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (33).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (32).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (36).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (38).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (37).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~CLAP (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (15).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (17).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (16).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (18).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (19).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (21).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (20).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (22).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (23).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (24).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (26).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (25).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (27).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (28).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (30).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (29).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (32).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (33).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (31).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (35).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (34).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE (36).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "~SNARE.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 3 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Killa Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "88.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "2 Lowkey Clap.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "90.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "92.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "89.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "91.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "93.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "94.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "95.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "96.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "97.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "98.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "100.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "99.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "123snares.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "187 FAM.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808  Snare 6 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808  Snare 6.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 3 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 4 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "808 Snare 4.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "12321snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "a.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Airy Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Airy Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "AK47 2 Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "AK47 Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "AK47 2 Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare 2.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Al Kapone Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (3).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (1).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (4).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (5).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (6).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (8).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (9).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (10).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (7).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (12).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (11).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (13).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "ALONE CLAP (14).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Clap.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 1.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 2 Im Here to Kill or be killed.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 3.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 4.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Krysis Snare 5.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Apoc Snare.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "b.wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "Back Up Snare 2 (2).wav",
+        "label": "snare"
+      },
+      {
+        "filename": "[Snare] (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[CLAP] - 07.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (15).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (17).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (18).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (19).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (20).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (16).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (22).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (21).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (23).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (24).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (25).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (26).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (29).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (27).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (28).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (30).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (31).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (33).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (32).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (34).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (35).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (36).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (38).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "[Snare] (37).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~CLAP (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~CLAP (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~CLAP (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~CLAP.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (15).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (16).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (18).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (17).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (19).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (20).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (21).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (22).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (23).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (26).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (27).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (24).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (25).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (28).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (30).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (31).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (29).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (32).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (33).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (34).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (35).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE (36).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "~SNARE.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Snare 3 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Snare 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Killa Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "88.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "2 Lowkey Clap.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "89.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "90.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "91.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "92.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "93.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "94.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "95.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "96.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "97.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "98.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "100.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "99.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "187 FAM.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "123snares.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808  Snare 6 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808  Snare 6.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare 3 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "12321snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare 4 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "808 Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "a.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Airy Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Airy Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "AK47 2 Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "AK47 Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "AK47 2 Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Al Kapone Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "ALONE CLAP (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Clap.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Snare 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Snare 1.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Snare 2 Im Here to Kill or be killed.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Snare 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Krysis Snare 5.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Apoc Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "b.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Back Up Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Back Up Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Back Up Snare 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Back Up Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Back Up Snare 3 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bang Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bang Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Back Up Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bang Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bang Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bass Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bass Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bass Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bass Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Snare 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Blackout Snare 4.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bling Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bling Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Box Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BOOGEYMAN CLAP (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Box Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bump Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "BS Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Buzz Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Bump Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Buzz Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Buzz Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Buzz Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "c.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cam Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clank Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Children Of The Corn Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cam Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clank Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (15).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (16).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (17).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (19).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (18).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (20).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (21).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (23).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (25).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (22).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (24).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (26).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (28).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (27).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (29).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (31).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (32).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (30).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (33).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (34).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (36).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (35).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (37).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (39).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap (38).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap Snare 2 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap Snare 3 (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap Snare 2.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap Snare 3.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Clap Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (15).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (16).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "cLAP_ (17).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "CM Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "CM Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "CU Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "CU Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cut Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cut Snare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "d.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "Cuttoffurmind Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "D Pimpin Snare.wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "DARK CLAP (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (1).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (3).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (2).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (4).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (5).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (6).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (8).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (7).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (9).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (10).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (11).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (12).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (14).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (13).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (16).wav",
+        "label": "hihat"
+      },
+      {
+        "filename": "digsnare (15).wav",
+        "label": "hihat"
+      }
+    ]
+  }
+}

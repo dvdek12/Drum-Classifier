@@ -1,0 +1,175 @@
+{
+  "params": {
+    "criterion": "entropy",
+    "max_depth": 5,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1
+  },
+  "feature_names": [
+    "spectral_centroid_mean",
+    "spectral_centroid_std",
+    "spectral_bandwidth_mean",
+    "spectral_bandwidth_std",
+    "spectral_rolloff_mean",
+    "spectral_rolloff_std",
+    "spectral_flatness_mean",
+    "spectral_flatness_std",
+    "rms_mean",
+    "rms_std",
+    "zero_crossing_rate_mean",
+    "zero_crossing_rate_std",
+    "mfcc_1_mean",
+    "mfcc_2_mean",
+    "mfcc_3_mean",
+    "mfcc_4_mean",
+    "mfcc_5_mean",
+    "mfcc_6_mean",
+    "mfcc_7_mean",
+    "mfcc_8_mean",
+    "mfcc_9_mean",
+    "mfcc_10_mean",
+    "mfcc_11_mean",
+    "mfcc_12_mean",
+    "mfcc_13_mean",
+    "mfcc_1_std",
+    "mfcc_2_std",
+    "mfcc_3_std",
+    "mfcc_4_std",
+    "mfcc_5_std",
+    "mfcc_6_std",
+    "mfcc_7_std",
+    "mfcc_8_std",
+    "mfcc_9_std",
+    "mfcc_10_std",
+    "mfcc_11_std",
+    "mfcc_12_std",
+    "mfcc_13_std",
+    "onset_strength_mean",
+    "onset_strength_std",
+    "tempo",
+    "chroma_mean",
+    "chroma_std"
+  ],
+  "classes": [
+    "clap",
+    "hihat",
+    "kick",
+    "snare",
+    "tom"
+  ],
+  "tree": {
+    "node_id": 1,
+    "depth": 0,
+    "samples": 21,
+    "impurity": 2.2671,
+    "is_leaf": false,
+    "class_distribution": {
+      "clap": 5,
+      "hihat": 3,
+      "kick": 6,
+      "snare": 4,
+      "tom": 3
+    },
+    "feature_index": 3,
+    "feature_name": "spectral_bandwidth_std",
+    "threshold": 147.5874,
+    "left": {
+      "node_id": 2,
+      "depth": 1,
+      "samples": 11,
+      "impurity": 1.5395,
+      "is_leaf": false,
+      "class_distribution": {
+        "clap": 5,
+        "hihat": 3,
+        "tom": 3
+      },
+      "feature_index": 3,
+      "feature_name": "spectral_bandwidth_std",
+      "threshold": 49.3995,
+      "left": {
+        "node_id": 3,
+        "depth": 2,
+        "samples": 5,
+        "impurity": -0.0,
+        "is_leaf": true,
+        "class_distribution": {
+          "clap": 5
+        },
+        "predicted_class": "clap"
+      },
+      "right": {
+        "node_id": 4,
+        "depth": 2,
+        "samples": 6,
+        "impurity": 1.0,
+        "is_leaf": false,
+        "class_distribution": {
+          "hihat": 3,
+          "tom": 3
+        },
+        "feature_index": 0,
+        "feature_name": "spectral_centroid_mean",
+        "threshold": 6260.6963,
+        "left": {
+          "node_id": 5,
+          "depth": 3,
+          "samples": 3,
+          "impurity": -0.0,
+          "is_leaf": true,
+          "class_distribution": {
+            "tom": 3
+          },
+          "predicted_class": "tom"
+        },
+        "right": {
+          "node_id": 6,
+          "depth": 3,
+          "samples": 3,
+          "impurity": -0.0,
+          "is_leaf": true,
+          "class_distribution": {
+            "hihat": 3
+          },
+          "predicted_class": "hihat"
+        }
+      }
+    },
+    "right": {
+      "node_id": 7,
+      "depth": 1,
+      "samples": 10,
+      "impurity": 0.971,
+      "is_leaf": false,
+      "class_distribution": {
+        "kick": 6,
+        "snare": 4
+      },
+      "feature_index": 0,
+      "feature_name": "spectral_centroid_mean",
+      "threshold": 5123.9365,
+      "left": {
+        "node_id": 8,
+        "depth": 2,
+        "samples": 6,
+        "impurity": -0.0,
+        "is_leaf": true,
+        "class_distribution": {
+          "kick": 6
+        },
+        "predicted_class": "kick"
+      },
+      "right": {
+        "node_id": 9,
+        "depth": 2,
+        "samples": 4,
+        "impurity": -0.0,
+        "is_leaf": true,
+        "class_distribution": {
+          "snare": 4
+        },
+        "predicted_class": "snare"
+      }
+    }
+  }
+}
