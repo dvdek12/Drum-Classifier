@@ -15,6 +15,6 @@
 
 <script setup>
 import { ref } from 'vue'
-defineProps({ num: String })
-const collapsed = ref(false)
+const props = defineProps({ num: String, collapsedDefault: Boolean })
+const collapsed = ref(props.collapsedDefault ?? false)
 </script>

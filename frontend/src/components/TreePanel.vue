@@ -1,8 +1,11 @@
 <template>
   <div class="tree-panel" ref="panelEl">
 
-    <!-- Pusty stan -->
-    <div v-if="!hasTree" class="tree-empty">
+    <!-- Animacja trenowania -->
+    <TreeBuildAnimation v-if="training" />
+
+    <!-- Pusty stan (nie trenuje i brak drzewa) -->
+    <div v-else-if="!hasTree" class="tree-empty">
       <div class="empty-icon">🌳</div>
       <p>Wytrenuj drzewo, żeby zobaczyć wizualizację</p>
     </div>
@@ -67,14 +70,16 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
-import TreeEdge        from './TreeEdge.vue'
-import TreeNodeInternal from './TreeNode.vue'
-import TreeLeaf        from './TreeLeaf.vue'
+import TreeEdge           from './TreeEdge.vue'
+import TreeNodeInternal   from './TreeNode.vue'
+import TreeLeaf           from './TreeLeaf.vue'
+import TreeBuildAnimation from './TreeBuildAnimation.vue'
 
 // ─── Props ────────────────────────────────────────────────────────────────────
 const props = defineProps({
   treeData: Object,   // state.trainedModel = { tree: { params, feature_names, classes, tree: rootNode }, evaluation, … }
   visible:  Boolean,
+  training: { type: Boolean, default: false },
 })
 
 // ─── Stałe layoutu ────────────────────────────────────────────────────────────

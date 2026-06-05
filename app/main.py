@@ -3,7 +3,7 @@ FastAPI backend — Klasyfikator sampli perkusyjnych przy użyciu drzewa decyzyj
 Serwuje też statyczny frontend (index.html).
 """
 
-import os, json, time, uuid, shutil, numpy as np
+import os, json, time, uuid, shutil, threading, numpy as np
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
@@ -27,13 +27,21 @@ app.add_middleware(
     allow_methods=["*"], allow_headers=["*"],
 )
 
-BASE_DIR   = Path(__file__).parent.parent
+BASE_DIR    = Path(__file__).parent.parent
 UPLOADS_DIR = BASE_DIR / "uploads"
 EXPORTS_DIR = BASE_DIR / "exports"
 STATIC_DIR  = BASE_DIR / "static"
+PRESETS_DIR = BASE_DIR / "presets"
 UPLOADS_DIR.mkdir(exist_ok=True)
 EXPORTS_DIR.mkdir(exist_ok=True)
 STATIC_DIR.mkdir(exist_ok=True)
+PRESETS_DIR.mkdir(exist_ok=True)
+
+AUDIO_EXT = {".wav", ".mp3", ".flac", ".ogg", ".aiff"}
+
+# Stan ładowania presetu (jeden na raz)
+_preset_job: dict = {"phase": "idle", "preset": "", "total": 0, "done": 0, "errors": 0}
+_preset_lock = threading.Lock()
 
 state = {
     "uploaded_files": {},
@@ -124,10 +132,28 @@ async def upload_batch(files: list[UploadFile] = File(...), label: str = Form(..
 
 @app.get("/files")
 def list_files():
-    files = [{"file_id":v["file_id"],"filename":v["filename"],
-               "label":v["label"],"duration":v["waveform"]["duration_sec"]}
-             for v in state["uploaded_files"].values()]
-    return {"files":files,"count":len(files)}
+    files = []
+    for v in state["uploaded_files"].values():
+        dur = v.get("duration_sec") or (v.get("waveform") or {}).get("duration_sec", 0)
+        files.append({"file_id": v["file_id"], "filename": v["filename"],
+                       "label": v["label"], "duration": dur})
+    return {"files": files, "count": len(files)}
+
+@app.get("/files/{file_id}")
+def get_file(file_id: str):
+    if file_id not in state["uploaded_files"]:
+        raise HTTPException(404, "Nie znaleziono")
+    v = state["uploaded_files"][file_id]
+    dur = v.get("duration_sec") or (v.get("waveform") or {}).get("duration_sec", 0)
+    return {
+        "file_id":      v["file_id"],
+        "filename":     v["filename"],
+        "label":        v["label"],
+        "duration_sec": dur,
+        "n_features":   len(v["features"]),
+        "feature_names": get_feature_names(),
+        "features":     v["features"],
+    }
 
 @app.delete("/files/{file_id}")
 def delete_file(file_id: str):
@@ -140,8 +166,126 @@ def delete_file(file_id: str):
 @app.get("/files/{file_id}/waveform")
 def get_waveform(file_id: str):
     if file_id not in state["uploaded_files"]:
-        raise HTTPException(404,"Nie znaleziono")
-    return state["uploaded_files"][file_id]["waveform"]
+        raise HTTPException(404, "Nie znaleziono")
+    entry = state["uploaded_files"][file_id]
+    if entry.get("waveform"):
+        return entry["waveform"]
+    # Preset-loaded files: waveform obliczany na żądanie
+    try:
+        return get_waveform_data(entry["path"])
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+# ──────────────────────────────────────────────────────────────────────────────
+#  PRESETY
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _scan_preset(preset_path: Path) -> dict[str, list[Path]]:
+    """Zwraca {label: [ścieżki plików]} dla danego presetu."""
+    result = {}
+    for d in sorted(preset_path.iterdir()):
+        if d.is_dir() and not d.name.startswith("."):
+            files = sorted(f for f in d.iterdir() if f.suffix.lower() in AUDIO_EXT)
+            if files:
+                result[d.name] = files
+    return result
+
+@app.get("/presets")
+def list_presets():
+    """Lista dostępnych presetów z liczbą plików per klasa."""
+    if not PRESETS_DIR.exists():
+        return {"presets": []}
+    presets = []
+    for d in sorted(PRESETS_DIR.iterdir()):
+        if not d.is_dir() or d.name.startswith("."):
+            continue
+        classes = _scan_preset(d)
+        if not classes:
+            continue
+        total = sum(len(v) for v in classes.values())
+        presets.append({
+            "name":    d.name,
+            "classes": {k: len(v) for k, v in classes.items()},
+            "total":   total,
+        })
+    return {"presets": presets}
+
+@app.post("/presets/{name}/load")
+def load_preset(name: str):
+    """Startuje ładowanie presetu w tle. Postęp: GET /presets/{name}/progress."""
+    global _preset_job
+    preset_path = PRESETS_DIR / name
+    if not preset_path.is_dir():
+        raise HTTPException(404, f"Preset '{name}' nie istnieje")
+    with _preset_lock:
+        if _preset_job["phase"] == "running":
+            raise HTTPException(409, "Inne ładowanie już trwa")
+        _preset_job = {"phase": "running", "preset": name,
+                       "total": 0, "done": 0, "errors": 0}
+
+    def _run():
+        global _preset_job
+        classes = _scan_preset(preset_path)
+        all_files = [(str(f), label) for label, files in classes.items() for f in files]
+
+        with _preset_lock:
+            _preset_job["total"] = len(all_files)
+
+        new_entries = {}
+        errors = 0
+
+        def process(path_label):
+            path, label = path_label
+            try:
+                feats = extract_features(path)
+                dur   = get_waveform_data(path)["duration_sec"]
+                return {"path": path, "label": label,
+                        "filename": Path(path).name,
+                        "features": feats.tolist(),
+                        "duration_sec": dur}
+            except Exception:
+                return None
+
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            futures = {ex.submit(process, item): item for item in all_files}
+            done_count = 0
+            for fut in futures:
+                result = fut.result()
+                done_count += 1
+                with _preset_lock:
+                    _preset_job["done"] = done_count
+                if result is None:
+                    errors += 1
+                    continue
+                new_entries[result["path"]] = result
+
+        # Wczytaj do state (zastąp poprzednie pliki)
+        state["uploaded_files"].clear()
+        for entry in new_entries.values():
+            fid = str(uuid.uuid4())[:8]
+            state["uploaded_files"][fid] = {
+                "file_id":    fid,
+                "filename":   entry["filename"],
+                "path":       entry["path"],
+                "label":      entry["label"],
+                "features":   entry["features"],
+                "duration_sec": entry["duration_sec"],
+                "waveform":   None,   # obliczane na żądanie
+            }
+
+        with _preset_lock:
+            _preset_job["phase"]  = "done"
+            _preset_job["errors"] = errors
+
+    thread = threading.Thread(target=_run, daemon=True)
+    thread.start()
+    return {"started": True, "preset": name}
+
+@app.get("/presets/{name}/progress")
+def preset_progress(name: str):
+    """Aktualny postęp ładowania presetu."""
+    with _preset_lock:
+        return dict(_preset_job)
 
 @app.get("/dataset")
 def get_dataset():

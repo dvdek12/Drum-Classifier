@@ -77,5 +77,14 @@ export function useStore() {
     toast('Wyniki wyeksportowane!')
   }
 
-  return { state, classCounts, readyToTrain, toast, uploadBatch, deleteFile, trainModel, predict, exportResults }
+  async function refreshFiles() {
+    const r = await fetch(API + '/files')
+    if (!r.ok) return
+    const data = await r.json()
+    // Zachowaj istniejące wpisy z features (upload), uzupełnij resztę z backendu
+    const existingById = Object.fromEntries(state.files.map(f => [f.file_id, f]))
+    state.files = data.files.map(f => existingById[f.file_id] ?? f)
+  }
+
+  return { state, classCounts, readyToTrain, toast, uploadBatch, deleteFile, trainModel, predict, exportResults, refreshFiles }
 }
