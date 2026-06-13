@@ -12,30 +12,18 @@ from pathlib import Path
 
 # Nazwy cech — używane w drzewie i wizualizacji
 FEATURE_NAMES = [
-    # Cechy spektralne
-    "spectral_centroid_mean",   # "jasność" dźwięku — wyższe = jaśniejszy dźwięk
-    "spectral_centroid_std",
+    # Cechy spektralne (tylko średnie)
+    "spectral_centroid_mean",   # "jasność" dźwięku
     "spectral_bandwidth_mean",  # szerokość pasma
-    "spectral_bandwidth_std",
     "spectral_rolloff_mean",    # częstotliwość poniżej której 85% energii
-    "spectral_rolloff_std",
-    "spectral_flatness_mean",   # jak bardzo szum vs ton
-    "spectral_flatness_std",
+    "spectral_flatness_mean",   # szum vs ton
 
     # Energia i dynamika
-    "rms_mean",                 # średnia energia sygnału
-    "rms_std",
-    "zero_crossing_rate_mean",  # liczba przejść przez zero (perkusja = dużo)
-    "zero_crossing_rate_std",
+    "rms_mean",                 # średnia energia
+    "zero_crossing_rate_mean",  # przejścia przez zero (perkusja = dużo)
 
-    # Cechy czasowe
-    "onset_strength_mean",      # siła ataku
-    "onset_strength_std",
-    "tempo",                    # BPM (mniej istotne dla pojedynczych sampli)
-
-    # Chroma — profil harmoniczny (bardziej przydatne dla tonalnych dźwięków)
-    "chroma_mean",
-    "chroma_std",
+    # Siła ataku
+    "onset_strength_mean",
 ]
 
 
@@ -60,37 +48,19 @@ def extract_features(audio_path: str, sr: int = 22050, duration: float = None) -
 
     features = []
 
-    # --- Cechy spektralne ---
-    spectral_centroids = librosa.feature.spectral_centroid(y=y, sr=sr)[0]
-    features += [spectral_centroids.mean(), spectral_centroids.std()]
-
-    spectral_bandwidth = librosa.feature.spectral_bandwidth(y=y, sr=sr)[0]
-    features += [spectral_bandwidth.mean(), spectral_bandwidth.std()]
-
-    spectral_rolloff = librosa.feature.spectral_rolloff(y=y, sr=sr)[0]
-    features += [spectral_rolloff.mean(), spectral_rolloff.std()]
-
-    spectral_flatness = librosa.feature.spectral_flatness(y=y)[0]
-    features += [spectral_flatness.mean(), spectral_flatness.std()]
+    # --- Cechy spektralne (tylko średnie) ---
+    features.append(librosa.feature.spectral_centroid(y=y, sr=sr)[0].mean())
+    features.append(librosa.feature.spectral_bandwidth(y=y, sr=sr)[0].mean())
+    features.append(librosa.feature.spectral_rolloff(y=y, sr=sr)[0].mean())
+    features.append(librosa.feature.spectral_flatness(y=y)[0].mean())
 
     # --- Energia i dynamika ---
-    rms = librosa.feature.rms(y=y)[0]
-    features += [rms.mean(), rms.std()]
-
-    zcr = librosa.feature.zero_crossing_rate(y)[0]
-    features += [zcr.mean(), zcr.std()]
+    features.append(librosa.feature.rms(y=y)[0].mean())
+    features.append(librosa.feature.zero_crossing_rate(y)[0].mean())
 
     # --- Siła ataku ---
-    onset_env = librosa.onset.onset_strength(y=y, sr=sr)
-    features += [onset_env.mean(), onset_env.std()]
+    features.append(librosa.onset.onset_strength(y=y, sr=sr).mean())
 
-    # --- Tempo ---
-    tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
-    features.append(float(tempo) if np.isscalar(tempo) else float(tempo[0]))
-
-    # --- Chroma ---
-    chroma = librosa.feature.chroma_stft(y=y, sr=sr)
-    features += [chroma.mean(), chroma.std()]
 
     return np.array(features, dtype=np.float32)
 
