@@ -267,7 +267,7 @@ const STATUS = [
   'Obliczanie zysku informacyjnego...',
   'Szukanie najlepszego podziału...',
   'Budowanie gałęzi drzewa...',
-  'Minimalizacja nieczystości (entropy)...',
+  'Obliczanie Information Gain / Gain Ratio...',
   'Walidacja modelu...',
 ]
 

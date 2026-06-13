@@ -215,34 +215,8 @@ const FEAT_DESC = {
   },
 }
 
-// Opisy MFCC (generowane dynamicznie)
-const MFCC_DETAILS = [
-  '',  // placeholder for 1-based index
-  'Ogólna energia sygnału. Najsilniej koreluje z głośnością. Kick: wysoki dodatni, cichy hihat: ujemny.',
-  'Kontrast bas–sopran. Kick (basowy) daje wartości ujemne, hihat (wysoki) — dodatnie.',
-  'Struktura formantów 3. rzędu — subtelne różnice barwy.',
-  'Charakter barwy 4. rzędu — odróżnia "metaliczne" brzmienia (hihat) od "drewnianych" (tom).',
-  'Barwa 5. rzędu — powiązana z rezonansem obudowy i membran.',
-  'Barwa 6. rzędu — detale spektralne średniego pasma.',
-  'Barwa 7. rzędu — odcienie w zakresie 2–4 kHz (wrażliwość słuchu).',
-  'Barwa 8. rzędu — cechy wyżej-częstotliwościowe.',
-  'Barwa 9. rzędu — drobne szczegóły barwy.',
-  'Barwa 10. rzędu — coraz mniej dyskryminatywne dla typowych perkusjonaliów.',
-  'Barwa 11. rzędu — mikrostruktura widmowa.',
-  'Barwa 12. rzędu — głównie szum numeryczny, mała wartość klasyfikacyjna.',
-  'Barwa 13. rzędu — najdrobniejsze detale; często ignorowane w uproszczonych modelach.',
-]
 
-for (let i = 1; i <= 13; i++) {
-  FEAT_DESC[`mfcc_${i}_mean`] = {
-    short: `MFCC ${i} — średnia`,
-    detail: MFCC_DETAILS[i],
-  }
-  FEAT_DESC[`mfcc_${i}_std`] = {
-    short: `MFCC ${i} — wariancja`,
-    detail: `Zmienność ${i}. współczynnika mel-cepstralnego w czasie. Duża wartość = barwa niestabilna lub sample zawiera wiele faz brzmieniowych.`,
-  }
-}
+
 
 // ── Grupy cech ────────────────────────────────────────────────────────────────
 const GROUPS_DEF = [
@@ -259,13 +233,6 @@ const GROUPS_DEF = [
     label: 'Energia i dynamika',
     desc: 'Siła sygnału i szybkość zmian — kluczowe dla odróżnienia głośnych od cichych sampli',
     test: n => n.startsWith('rms') || n.startsWith('zero_crossing'),
-  },
-  {
-    key: 'mfcc',
-    icon: '🎛',
-    label: 'MFCC — Mel-Frequency Cepstral Coefficients',
-    desc: 'Kompaktowy opis barwy inspirowany słuchem człowieka (13 × średnia + 13 × wariancja = 26 cech)',
-    test: n => n.startsWith('mfcc_'),
   },
   {
     key: 'temporal',

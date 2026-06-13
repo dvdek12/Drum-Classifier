@@ -4,7 +4,8 @@
       <label>Kryterium podziału</label>
       <select v-model="params.criterion">
         <option value="gini">Gini impurity</option>
-        <option value="entropy">Entropia informacyjna</option>
+        <option value="information_gain">Information Gain</option>
+        <option value="gain_ratio">Gain Ratio</option>
       </select>
     </div>
     <div class="param-row">
@@ -12,12 +13,12 @@
       <input type="range" min="1" max="15" v-model.number="params.max_depth" />
     </div>
     <div class="param-row">
-      <label>Min. próbek do podziału <span>{{ params.min_samples_split }}</span></label>
-      <input type="range" min="2" max="20" v-model.number="params.min_samples_split" />
+      <label>Min. example count <span>{{ params.min_example_count }}</span></label>
+      <input type="range" min="1" max="20" v-model.number="params.min_example_count" />
     </div>
     <div class="param-row">
-      <label>Min. próbek w liściu <span>{{ params.min_samples_leaf }}</span></label>
-      <input type="range" min="1" max="10" v-model.number="params.min_samples_leaf" />
+      <label>Min. information gain <span>{{ params.min_gain.toFixed(2) }}</span></label>
+      <input type="range" min="0" max="0.5" step="0.01" v-model.number="params.min_gain" />
     </div>
     <div class="param-row">
       <label>Test split <span>{{ params.test_split_pct }}%</span></label>
@@ -32,8 +33,8 @@ import { reactive } from 'vue'
 const params = reactive({
   criterion: 'gini',
   max_depth: 5,
-  min_samples_split: 2,
-  min_samples_leaf: 1,
+  min_example_count: 2,
+  min_gain: 0.0,
   test_split_pct: 20,
 })
 

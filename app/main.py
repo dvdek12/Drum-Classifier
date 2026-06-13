@@ -47,14 +47,14 @@ state = {
     "uploaded_files": {},
     "model": None,
     "last_evaluation": None,
-    "tree_params": {"criterion":"gini","max_depth":5,"min_samples_split":2,"min_samples_leaf":1},
+    "tree_params": {"criterion":"gini","max_depth":5,"min_example_count":2,"min_gain":0.0},
 }
 
 class TrainParams(BaseModel):
     criterion: str = "gini"
     max_depth: int = 5
-    min_samples_split: int = 2
-    min_samples_leaf: int = 1
+    min_example_count: int = 2
+    min_gain: float = 0.0
     test_split: float = 0.2
 
 @app.get("/")
@@ -313,7 +313,7 @@ def train_model(params: TrainParams):
         raise HTTPException(400,"Za mało różnych klas w danych treningowych.")
     model = DecisionTreeClassifier(
         criterion=params.criterion, max_depth=params.max_depth,
-        min_samples_split=params.min_samples_split, min_samples_leaf=params.min_samples_leaf)
+        min_example_count=params.min_example_count, min_gain=params.min_gain)
     t0 = time.time()
     model.fit(X_train, y_train, feature_names=get_feature_names())
     elapsed_ms = (time.time()-t0)*1000

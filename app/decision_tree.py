@@ -61,26 +61,26 @@ class DecisionTreeClassifier:
     Klasyfikator drzewa decyzyjnego - implementacja CART.
 
     Parametry (ustawiane przez użytkownika w aplikacji):
-        criterion     - kryterium podziału: 'gini' lub 'entropy'
-        max_depth     - maksymalna głębokość drzewa
-        min_samples_split - minimalna liczba próbek do podziału węzła
-        min_samples_leaf  - minimalna liczba próbek w liściu
+        criterion         - kryterium podziału: 'gini', 'information_gain' lub 'gain_ratio'
+        max_depth         - maksymalna głębokość drzewa
+        min_example_count - minimalna liczba próbek w węźle żeby próbować podziału
+        min_gain          - minimalny zysk podziału (poniżej progu → liść)
     """
 
     def __init__(
         self,
         criterion: str = "gini",
         max_depth: int = 5,
-        min_samples_split: int = 2,
-        min_samples_leaf: int = 1,
+        min_example_count: int = 2,
+        min_gain: float = 0.0,
     ):
-        if criterion not in ("gini", "entropy"):
-            raise ValueError("criterion musi być 'gini' lub 'entropy'")
+        if criterion not in ("gini", "information_gain", "gain_ratio"):
+            raise ValueError("criterion musi być 'gini', 'information_gain' lub 'gain_ratio'")
 
         self.criterion = criterion
         self.max_depth = max_depth
-        self.min_samples_split = min_samples_split
-        self.min_samples_leaf = min_samples_leaf
+        self.min_example_count = min_example_count
+        self.min_gain = min_gain
 
         self.root: Optional[Node] = None
         self.feature_names: list[str] = []
@@ -101,19 +101,54 @@ class DecisionTreeClassifier:
         return 1.0 - float(np.sum(probs ** 2))
 
     def _entropy(self, y: np.ndarray) -> float:
-        """Entropia informacyjna: -Σ p_i * log2(p_i)"""
+        """Entropia: -Σ p_i * log2(p_i)  (helper dla information_gain i gain_ratio)"""
         n = len(y)
         if n == 0:
             return 0.0
         _, counts = np.unique(y, return_counts=True)
         probs = counts / n
-        # bezpieczny log2 — ignorujemy p=0
         return float(-np.sum(probs * np.log2(probs + 1e-12)))
 
+    def _information_gain(self, y: np.ndarray, y_left: np.ndarray, y_right: np.ndarray) -> float:
+        """Information Gain: H(rodzic) - Σ (n_dziecko/n) * H(dziecko)"""
+        n = len(y)
+        n_left, n_right = len(y_left), len(y_right)
+        return self._entropy(y) - (
+            n_left / n * self._entropy(y_left) +
+            n_right / n * self._entropy(y_right)
+        )
+
+    def _gain_ratio(self, y: np.ndarray, y_left: np.ndarray, y_right: np.ndarray) -> float:
+        """Gain Ratio: Information Gain / Split Information"""
+        ig = self._information_gain(y, y_left, y_right)
+        n = len(y)
+        p_left, p_right = len(y_left) / n, len(y_right) / n
+        split_info = -(
+            p_left * np.log2(p_left + 1e-12) +
+            p_right * np.log2(p_right + 1e-12)
+        )
+        if split_info < 1e-12:
+            return 0.0
+        return ig / split_info
+
     def _impurity(self, y: np.ndarray) -> float:
+        """Miara nieczystości węzła (do wyświetlania w drzewie)."""
         if self.criterion == "gini":
             return self._gini(y)
-        return self._entropy(y)
+        return self._entropy(y)  # zarówno information_gain jak i gain_ratio wyświetlają entropię węzła
+
+    def _split_score(self, y: np.ndarray, y_left: np.ndarray, y_right: np.ndarray) -> float:
+        """Wynik podziału wg aktywnego kryterium (wyższy = lepszy)."""
+        n = len(y)
+        n_left, n_right = len(y_left), len(y_right)
+        if self.criterion == "gini":
+            return self._gini(y) - (
+                n_left / n * self._gini(y_left) +
+                n_right / n * self._gini(y_right)
+            )
+        if self.criterion == "information_gain":
+            return self._information_gain(y, y_left, y_right)
+        return self._gain_ratio(y, y_left, y_right)
 
     # ------------------------------------------------------------------ #
     #  Szukanie najlepszego podziału                                       #
@@ -129,8 +164,6 @@ class DecisionTreeClassifier:
         best_feat = None
         best_thresh = None
 
-        parent_impurity = self._impurity(y)
-
         for feat_idx in range(n_features):
             col = X[:, feat_idx]
             # Progi to unikalne wartości środkowe między sąsiednimi próbkami
@@ -144,18 +177,13 @@ class DecisionTreeClassifier:
                 n_left = left_mask.sum()
                 n_right = right_mask.sum()
 
-                # Warunek minimalnej liczby próbek w liściu
-                if n_left < self.min_samples_leaf or n_right < self.min_samples_leaf:
+                score = self._split_score(y, y[left_mask], y[right_mask])
+
+                if score <= self.min_gain:
                     continue
 
-                # Information Gain
-                gain = parent_impurity - (
-                    n_left  / n_samples * self._impurity(y[left_mask]) +
-                    n_right / n_samples * self._impurity(y[right_mask])
-                )
-
-                if gain > best_gain:
-                    best_gain = gain
+                if score > best_gain:
+                    best_gain = score
                     best_feat = feat_idx
                     best_thresh = thresh
 
@@ -191,7 +219,7 @@ class DecisionTreeClassifier:
         # Warunki zatrzymania → liść
         if (
             depth >= self.max_depth
-            or len(y) < self.min_samples_split
+            or len(y) < self.min_example_count
             or len(np.unique(y)) == 1
             or impurity == 0.0
         ):
@@ -269,8 +297,8 @@ class DecisionTreeClassifier:
             "params": {
                 "criterion": self.criterion,
                 "max_depth": self.max_depth,
-                "min_samples_split": self.min_samples_split,
-                "min_samples_leaf": self.min_samples_leaf,
+                "min_example_count": self.min_example_count,
+                "min_gain": self.min_gain,
             },
             "feature_names": self.feature_names,
             "classes": self.classes_,

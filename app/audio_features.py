@@ -28,10 +28,6 @@ FEATURE_NAMES = [
     "zero_crossing_rate_mean",  # liczba przejść przez zero (perkusja = dużo)
     "zero_crossing_rate_std",
 
-    # MFCC — 13 współczynników mel-cepstralnych (charakterystyka barwy)
-    *[f"mfcc_{i}_mean" for i in range(1, 14)],
-    *[f"mfcc_{i}_std"  for i in range(1, 14)],
-
     # Cechy czasowe
     "onset_strength_mean",      # siła ataku
     "onset_strength_std",
@@ -83,11 +79,6 @@ def extract_features(audio_path: str, sr: int = 22050, duration: float = None) -
 
     zcr = librosa.feature.zero_crossing_rate(y)[0]
     features += [zcr.mean(), zcr.std()]
-
-    # --- MFCC (13 współczynników) ---
-    mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
-    for i in range(13):
-        features += [mfccs[i].mean(), mfccs[i].std()]
 
     # --- Siła ataku ---
     onset_env = librosa.onset.onset_strength(y=y, sr=sr)
