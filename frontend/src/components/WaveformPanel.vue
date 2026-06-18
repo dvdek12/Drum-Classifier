@@ -21,52 +21,24 @@
       <canvas ref="canvas" height="80" />
     </div>
 
-    <!-- ── Co to jest wektor cech? ────────────────────────────────── -->
-    <div class="wp-intro">
-      <span class="wp-intro-icon">ℹ</span>
-      <span>
-        <b>Wektor cech</b> to liczbowa reprezentacja dźwięku, którą drzewo decyzyjne
-        analizuje zamiast surowej fali. Każda cecha opisuje inny aspekt brzmienia —
-        najedź na nazwę, żeby zobaczyć szczegółowy opis.
-      </span>
-    </div>
-
-    <!-- ── Grupy cech ─────────────────────────────────────────────── -->
-    <div v-for="group in groupedFeatures" :key="group.key" class="feat-group">
-
-      <!-- Nagłówek grupy -->
-      <div class="feat-group-header" @click="toggleGroup(group.key)">
-        <span class="feat-group-icon">{{ group.icon }}</span>
-        <div class="feat-group-titles">
-          <span class="feat-group-name">{{ group.label }}</span>
-          <span class="feat-group-desc">{{ group.desc }}</span>
+    <!-- ── Karty cech ────────────────────────────────────────────── -->
+    <div class="feat-grid">
+      <div
+        v-for="(name, idx) in featureNames" :key="name"
+        class="feat-card"
+        :class="{ 'feat-card--hovered': hovered === name }"
+        @mouseenter="hovered = name"
+        @mouseleave="hovered = null"
+      >
+        <div class="feat-card-top">
+          <span class="feat-friendly">{{ FEAT_DESC[name]?.short ?? name }}</span>
+          <span class="feat-raw">{{ name }}</span>
         </div>
-        <span class="feat-group-count">{{ group.items.length }} cech</span>
-        <span class="feat-group-chevron" :class="{ open: !collapsed[group.key] }">›</span>
-      </div>
-
-      <!-- Karty cech -->
-      <div v-show="!collapsed[group.key]" class="feat-grid">
-        <div
-          v-for="item in group.items" :key="item.name"
-          class="feat-card"
-          :class="{ 'feat-card--hovered': hovered === item.name }"
-          @mouseenter="hovered = item.name"
-          @mouseleave="hovered = null"
-        >
-          <!-- Nazwa przyjazna + raw name -->
-          <div class="feat-card-top">
-            <span class="feat-friendly">{{ FEAT_DESC[item.name]?.short ?? item.name }}</span>
-            <span class="feat-raw">{{ item.name }}</span>
-          </div>
-          <!-- Pasek wartości -->
-          <div class="feat-bar-wrap">
-            <div class="feat-bar"
-              :style="{ width: pct(item.idx) + '%', background: classColor(fileInfo.label) }" />
-          </div>
-          <!-- Wartość numeryczna -->
-          <div class="feat-val">{{ fmtVal(features[item.idx]) }}</div>
+        <div class="feat-bar-wrap">
+          <div class="feat-bar"
+            :style="{ width: pct(idx) + '%', background: classColor(fileInfo.label) }" />
         </div>
+        <div class="feat-val">{{ fmtVal(features[idx]) }}</div>
       </div>
     </div>
 
@@ -218,55 +190,6 @@ const FEAT_DESC = {
 
 
 
-// ── Grupy cech ────────────────────────────────────────────────────────────────
-const GROUPS_DEF = [
-  {
-    key: 'spectral',
-    icon: '〰',
-    label: 'Cechy spektralne',
-    desc: 'Rozkład energii po częstotliwościach — opisują "barwę" i "jasność" brzmienia',
-    test: n => n.startsWith('spectral_'),
-  },
-  {
-    key: 'energy',
-    icon: '⚡',
-    label: 'Energia i dynamika',
-    desc: 'Siła sygnału i szybkość zmian — kluczowe dla odróżnienia głośnych od cichych sampli',
-    test: n => n.startsWith('rms') || n.startsWith('zero_crossing'),
-  },
-  {
-    key: 'temporal',
-    icon: '⏱',
-    label: 'Cechy czasowe',
-    desc: 'Charakterystyki rytmiczne — siła ataku i estymowane tempo',
-    test: n => n.startsWith('onset') || n === 'tempo',
-  },
-  {
-    key: 'chroma',
-    icon: '🎵',
-    label: 'Chroma — profil harmoniczny',
-    desc: 'Rozkład energii na 12 klas tonalnych (C, C#, D, ...) — dla perkusji zazwyczaj niskie wartości',
-    test: n => n.startsWith('chroma'),
-  },
-]
-
-const groupedFeatures = computed(() => {
-  const names = featureNames.value
-  const idxOf = Object.fromEntries(names.map((n, i) => [n, i]))
-  return GROUPS_DEF.map(g => ({
-    ...g,
-    items: names
-      .filter(g.test)
-      .map(name => ({ name, idx: idxOf[name] })),
-  })).filter(g => g.items.length)
-})
-
-// ── Zwijanie grup ─────────────────────────────────────────────────────────────
-const collapsed = reactive({})
-function toggleGroup(key) {
-  collapsed[key] = !collapsed[key]
-}
-
 // ── Tooltip przy hover ────────────────────────────────────────────────────────
 const hovered   = ref(null)
 const mousePos  = reactive({ x: 0, y: 0 })
@@ -309,87 +232,13 @@ watch(hovered, v => {
   margin-left: auto;
 }
 
-/* ── Info banner ──────────────────────────────────────────────────────────── */
-.wp-intro {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  background: rgba(236, 167, 44, 0.06);
-  border: 1px solid rgba(236, 167, 44, 0.18);
-  border-radius: 8px;
-  padding: 10px 14px;
-  margin: 10px 0 14px;
-  font-size: 12px;
-  color: var(--text2);
-  line-height: 1.55;
-}
-.wp-intro-icon {
-  font-size: 14px;
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.wp-intro b { color: var(--text); }
-
-/* ── Grupy ────────────────────────────────────────────────────────────────── */
-.feat-group { margin-bottom: 10px; }
-
-.feat-group-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
-  transition: background .15s;
-  margin-bottom: 6px;
-}
-.feat-group-header:hover { background: var(--bg3); }
-
-.feat-group-icon { font-size: 16px; flex-shrink: 0; }
-
-.feat-group-titles { flex: 1; min-width: 0; }
-.feat-group-name {
-  display: block;
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text2);
-  text-transform: uppercase;
-  letter-spacing: .8px;
-}
-.feat-group-desc {
-  display: block;
-  font-size: 11px;
-  color: var(--text3);
-  margin-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.feat-group-count {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text3);
-  flex-shrink: 0;
-}
-.feat-group-chevron {
-  font-size: 18px;
-  color: var(--text3);
-  transition: transform .22s;
-  flex-shrink: 0;
-}
-.feat-group-chevron.open { transform: rotate(90deg); }
-
 /* ── Siatka kart ──────────────────────────────────────────────────────────── */
 .feat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: 7px;
   padding: 0 2px;
+  margin-top: 12px;
 }
 
 /* ── Karta cechy ──────────────────────────────────────────────────────────── */

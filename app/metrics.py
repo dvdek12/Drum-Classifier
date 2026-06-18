@@ -1,25 +1,14 @@
-"""
-Metryki oceny klasyfikatora — bez sklearn, własna implementacja.
-Jakość: accuracy, precision, recall, F1, macierz konfuzji.
-Efektywność: liczba węzłów, głębokość drzewa.
-"""
-
 import numpy as np
 from collections import defaultdict
 
 
 def accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """Dokładność klasyfikacji."""
     y_true = np.array(y_true, dtype=str)
     y_pred = np.array(y_pred, dtype=str)
     return float(np.mean(y_true == y_pred))
 
 
 def confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, classes: list[str]) -> np.ndarray:
-    """
-    Macierz konfuzji.
-    Wiersze = prawdziwe klasy, kolumny = przewidywane klasy.
-    """
     n = len(classes)
     class_to_idx = {c: i for i, c in enumerate(classes)}
     matrix = np.zeros((n, n), dtype=int)
@@ -34,9 +23,6 @@ def confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, classes: list[str])
 
 
 def precision_recall_f1(y_true: np.ndarray, y_pred: np.ndarray, classes: list[str]) -> dict:
-    """
-    Precision, Recall i F1 dla każdej klasy + makro-średnia.
-    """
     y_true = np.array(y_true, dtype=str)
     y_pred = np.array(y_pred, dtype=str)
 
@@ -79,10 +65,6 @@ def evaluate_full(
     tree_stats: dict,
     training_time_ms: float,
 ) -> dict:
-    """
-    Pełna ocena modelu — jakość + efektywność.
-    Zwraca słownik gotowy do serializacji JSON.
-    """
     acc = accuracy(y_true, y_pred)
     cm = confusion_matrix(y_true, y_pred, classes)
     prf = precision_recall_f1(y_true, y_pred, classes)

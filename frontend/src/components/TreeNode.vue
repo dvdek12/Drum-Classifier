@@ -123,18 +123,37 @@ const distSegs = computed(() => {
   })
 })
 
+// ─── Opisy cech ───────────────────────────────────────────────────────────────
+const FEATURE_DESCRIPTIONS = {
+  spectral_centroid_mean:  '"Jasność" dźwięku — środek ciężkości widma częstotliwości. Wysoka wartość = dźwięk ostry, wysoki (hi-hat). Niska = dźwięk głęboki (kick).',
+  spectral_bandwidth_mean: 'Szerokość pasma spektralnego — jak bardzo energia jest rozłożona po częstotliwościach. Kick ma wąskie pasmo, hi-hat szerokie.',
+  spectral_rolloff_mean:   'Częstotliwość poniżej której skupia się 85% energii sygnału. Wysoka = dużo wysokich tonów (hi-hat, talerze). Niska = bas (kick).',
+  spectral_flatness_mean:  'Jak bardzo dźwięk przypomina szum (1.0) vs czysty ton (0.0). Hi-hat i snare mają wyższy szum niż kick.',
+  rms_mean:                'Średnia energia (głośność) sygnału. RMS mierzy "moc" sampla w czasie.',
+  zero_crossing_rate_mean: 'Ile razy na sekundę sygnał przechodzi przez zero. Dźwięki perkusyjne mają wysokie ZCR, kick niskie.',
+  onset_strength_mean:     'Siła ataków dźwięku — jak gwałtownie pojawia się energia. Perkusja ma silne, ostre ataki.',
+  attack_time:             'Czas narastania do szczytu amplitudy (w ms). Kick ma dłuższy atak niż hi-hat, który uderza natychmiastowo.',
+  mfcc_1_mean:             'Pierwsza współrzędna MFCC — opisuje ogólną barwę dźwięku. Ujemna = niski, głęboki (kick). Dodatnia = wysoki (hi-hat).',
+  spectral_contrast_mean:  'Kontrast między pikami a dolinami widma. Wysoki kontrast = wyraźna struktura harmoniczna.',
+  tempo_bpm:               'BPM wykryte z sampla. Dla krótkich sampli perkusyjnych zwykle mało wiarygodne.',
+}
+
 // ─── Tooltip ──────────────────────────────────────────────────────────────────
 function onHover(e) {
   const distHtml = Object.entries(props.node.class_distribution ?? {})
     .map(([k, v]) => `<span style="color:${CLASS_COLORS[k] ?? fallback}">${k}: ${v}</span>`)
     .join(' · ')
 
+  const featName = props.node.feature_name ?? ''
+  const featDesc = FEATURE_DESCRIPTIONS[featName] ?? ''
+
   emit('tooltip', {
     event: e,
     html:
-      `<b>🔀 Węzeł #${props.node.node_id}</b><br>` +
-      `<span style="color:#c9a96e">${props.node.feature_name}</span><br>` +
-      `Próg: <b>${props.node.threshold}</b><br>` +
+      `<b>Węzeł #${props.node.node_id}</b><br>` +
+      `<span style="color:#c9a96e;font-weight:600">${featName}</span> ≤ <b>${props.node.threshold}</b><br>` +
+      (featDesc ? `<span style="color:#b0a0c0;font-size:11px">${featDesc}</span><br>` : '') +
+      `<hr style="border-color:#44355b;margin:4px 0">` +
       `Próbki: ${props.node.samples} · Nieczystość: ${props.node.impurity?.toFixed(4) ?? '—'}<br>` +
       distHtml,
   })

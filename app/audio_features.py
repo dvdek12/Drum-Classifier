@@ -1,8 +1,3 @@
-"""
-Ekstrakcja cech audio z plików .wav / .mp3 / .flac itp.
-Używamy librosa do wczytywania i obliczania cech.
-Cechy są znormalizowane — gotowe do podania do drzewa decyzyjnego.
-"""
 
 import numpy as np
 import librosa
@@ -24,21 +19,17 @@ FEATURE_NAMES = [
 
     # Siła ataku
     "onset_strength_mean",
+
+    # Nowe cechy
+    "attack_time",              # czas narastania do szczytu amplitudy (ms)
+    "mfcc_1_mean",              # barwa dźwięku (nisko=kick, wysoko=hi-hat)
+    "spectral_contrast_mean",   # kontrast między pikami a dolinami widma
+    "tempo_bpm",                # BPM wykryte z sampla
 ]
 
 
 def extract_features(audio_path: str, sr: int = 22050, duration: float = None) -> np.ndarray:
-    """
-    Wczytuje plik audio i zwraca wektor cech.
-
-    Args:
-        audio_path: ścieżka do pliku audio
-        sr: częstotliwość próbkowania (22050 Hz standard)
-        duration: przytnij do N sekund (None = cały plik)
-
-    Returns:
-        np.ndarray shape (n_features,) — wektor cech
-    """
+   
     # Wczytaj audio
     y, sr = librosa.load(audio_path, sr=sr, duration=duration, mono=True)
 
@@ -61,19 +52,32 @@ def extract_features(audio_path: str, sr: int = 22050, duration: float = None) -
     # --- Siła ataku ---
     features.append(librosa.onset.onset_strength(y=y, sr=sr).mean())
 
+    # --- Czas narastania (attack time) ---
+    amplitude_env = np.abs(y)
+    peak_idx = np.argmax(amplitude_env)
+    attack_time_ms = (peak_idx / sr) * 1000.0
+    features.append(attack_time_ms)
 
-    return np.array(features, dtype=np.float32)
+    # --- MFCC-1 (ogólna barwa dźwięku) ---
+    mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=1)
+    features.append(mfcc[0].mean())
+
+    # --- Kontrast spektralny ---
+    contrast = librosa.feature.spectral_contrast(y=y, sr=sr)
+    features.append(contrast.mean())
+
+    # --- Tempo (BPM) ---
+    tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
+    features.append(float(tempo))
+
+    arr = np.array(features, dtype=np.float32)
+    # Zamień NaN/inf na 0 (np. tempo_bpm dla bardzo krótkich sampli)
+    arr = np.nan_to_num(arr, nan=0.0, posinf=0.0, neginf=0.0)
+    return arr
 
 
 def extract_features_batch(file_paths: list[str], labels: list[str] = None):
-    """
-    Ekstraktuje cechy z listy plików.
 
-    Returns:
-        X: np.ndarray shape (n_files, n_features)
-        y: np.ndarray shape (n_files,) — etykiety (jeśli podane)
-        errors: lista błędów
-    """
     X, y_out, errors = [], [], []
 
     for i, path in enumerate(file_paths):
@@ -93,10 +97,7 @@ def extract_features_batch(file_paths: list[str], labels: list[str] = None):
 
 
 def get_waveform_data(audio_path: str, max_points: int = 1000) -> dict:
-    """
-    Zwraca dane fali dźwiękowej do wizualizacji na froncie.
-    Redukuje liczbę punktów do max_points żeby nie przeciążać przeglądarki.
-    """
+
     y, sr = librosa.load(audio_path, sr=22050, mono=True)
 
     # Downsampling do wizualizacji

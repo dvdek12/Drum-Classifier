@@ -1,8 +1,3 @@
-"""
-FastAPI backend — Klasyfikator sampli perkusyjnych przy użyciu drzewa decyzyjnego.
-Serwuje też statyczny frontend (index.html).
-"""
-
 import os, json, time, uuid, shutil, threading, numpy as np
 from pathlib import Path
 from datetime import datetime
@@ -307,14 +302,17 @@ def train_model(params: TrainParams):
     n = len(X_all)
     n_test = max(1, int(n * params.test_split))
     idx = np.random.permutation(n)
+
     X_train,y_train = X_all[idx[n_test:]], y_all[idx[n_test:]]
     X_test, y_test  = X_all[idx[:n_test]],  y_all[idx[:n_test]]
+    
     if len(np.unique(y_train)) < 2:
         raise HTTPException(400,"Za mało różnych klas w danych treningowych.")
     model = DecisionTreeClassifier(
         criterion=params.criterion, max_depth=params.max_depth,
         min_example_count=params.min_example_count, min_gain=params.min_gain)
     t0 = time.time()
+
     model.fit(X_train, y_train, feature_names=get_feature_names())
     elapsed_ms = (time.time()-t0)*1000
     y_pred_test  = model.predict(X_test)
@@ -323,6 +321,7 @@ def train_model(params: TrainParams):
                   "n_features":X_train.shape[1],"n_train":len(X_train),"n_test":len(X_test)}
     evaluation = evaluate_full(y_test,y_pred_test,classes=model.classes_,
                                 tree_stats=tree_stats,training_time_ms=elapsed_ms)
+    
     evaluation["train_accuracy"] = round(calc_accuracy(y_train,y_pred_train),4)
     state["model"] = model
     state["last_evaluation"] = evaluation
